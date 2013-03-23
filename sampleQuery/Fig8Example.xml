@@ -1,0 +1,30 @@
+<phylo pID="t1">
+
+	<node nID="1" type="root">
+		<node nID="3" type="leaf">
+			<genename>MYH16</genename>
+			<edge>
+				<value>0.262</value>
+			</edge>
+		</node>
+		<node nID="2" type="node">
+			<edge>
+				<value>0.125</value>
+			</edge>
+			<node nID="7" type="leaf">
+				<genename>MYH15</genename>
+			</node>
+			<node iID="12" type="any">
+				<node nID="14" type="leaf">
+					<genename>MYH7</genename>
+				</node>
+				<node nID="9"> type="leaf"></node>
+			</node>
+		</node>
+	</node>
+	<horizontal>
+		<node nID="12">
+			<node nID="3"></node>
+		</node>
+	</horizontal>
+</phylo>

@@ -1,0 +1,19 @@
+/* Will be compiled down to a single stylesheet with your sass files */
+
+/* Twitter Bootstrap Requirements */
+
+body {
+	padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+
+
+/* Graph Requirements */
+.node {
+  stroke: #fff;
+  stroke-width: 2px;
+}
+
+.link {
+  fill: none;
+  stroke: #000;
+}
