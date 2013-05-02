@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
 
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
 
     <style type="text/css">
 
-        #editor { 
+        #editor {
             position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
+            top: 0px;
+            left:0px;
+            
             width:500px;
             height: 500px;
         }
@@ -35,14 +37,14 @@
             position:absolute;
             top: 0px;
             left: 525px;
-
-            z-index: 1;
         }
 
         #nodeInfo {
             position: absolute;
             right: 0px;
             top: 0px;
+
+            width: 150px;
 
             background-color: #444444;
 
@@ -63,11 +65,11 @@
     </style>
 
     <body>
+
             <div id="data">
             </div>
 
             <div id="nodeInfo">
-
                 <form action="#" method="get" onSubmit="nodeSave(); return false;">
                     <input id="edgeValue" type="number" placeholder="Edge value" />
 
@@ -96,6 +98,7 @@
                 </form>
             </div>
 
+            <div id="graph"></div>
             <div id="editor"></div>
             <div id="editorSettings">
                 <form action="#" method="get" onSubmit="sendQuery(); return false;">
@@ -103,7 +106,6 @@
                     <input type="submit" name="submit" value="Search" />
                 </form>
             </div>
-
             <div id="response"></div>
             
             <script src="http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
@@ -116,8 +118,13 @@
                 responseEditor.setTheme("ace/theme/monokai");
             </script>
             
-            <div id="graph"></div>
+            
             <script type="text/javascript">
+
+                $(document).ready(function() {
+                    $('#nodeInfo').hide();
+                    $( "#tabs" ).tabs();
+                });
 
                 var w = 960,
                 h = 500,
@@ -251,7 +258,15 @@
                 }
 
                 function click(d) {
+
                     console.log("Clicked = id:" + d.id + " edge: " + d.edge );
+
+                    /*$('#nodeInfo').offset({
+                        top: window.event.clientY, 
+                        left: window.event.clientX + 10
+                    });*/
+
+                    $('#nodeInfo').show();
 
                     /*var content = prompt("Content", "default content");
                     var nodeType = prompt("Node Type:", "node");
