@@ -16,9 +16,9 @@ define([
   });
 
   var initialize = function(){
-  
+
     var app_router = new AppRouter;
-    
+
     app_router.on('route:editor', function(type){
 
       var type = "visual";
@@ -26,7 +26,7 @@ define([
       var menuView = new MenuView();
       menuView.render(type);
 
-      
+
 
       if (type == "visual") {
 
@@ -37,7 +37,7 @@ define([
         console.log("Need a view for the editor");
       }
 
-      
+
     });
 
     app_router.on('route:about', function() {
@@ -47,7 +47,7 @@ define([
     app_router.on('route:defaultAction', function(){
         console.log("Default Route");
     });
-    
+
     Backbone.history.start({pushState: true, root: "/"});
   };
   return {
