@@ -19,8 +19,6 @@ define([
 
 			this.$el.append(renderer);
 
-			
-
 		}
 
 	});

@@ -11,7 +11,7 @@ require.config({
     graph: 'general/graph'
   }
 });
- 
+
 require(['app'], function(App) {
   // use app here
   App.initialize();
