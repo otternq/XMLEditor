@@ -22,6 +22,15 @@
             left: 0px;
         }
 
+        #response {
+            position: absolute;
+            top: 550px;
+            left: 0px;
+
+            width:500px;
+            height: 500px;
+        }
+
         #graph {
             position:absolute;
             top: 0px;
@@ -89,15 +98,22 @@
 
             <div id="editor"></div>
             <div id="editorSettings">
-                <input type="text" size="85" name="url" placeholder="API URL" />
-                <input type="submit" name="submit" value="Search" />
+                <form action="#" method="get" onSubmit="sendQuery(); return false;">
+                    <input type="text" size="85" id="url" name="url" placeholder="API URL" />
+                    <input type="submit" name="submit" value="Search" />
+                </form>
             </div>
+
+            <div id="response"></div>
             
             <script src="http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
             <script>
                 var editor = ace.edit("editor");
                 editor.setTheme("ace/theme/monokai");
                 editor.getSession().setMode("ace/mode/javascript");
+
+                var responseEditor = ace.edit("response");
+                responseEditor.setTheme("ace/theme/monokai");
             </script>
             
             <div id="graph"></div>
@@ -349,6 +365,22 @@
                             content: data.content
                         }
                     } return undefined;
+                }
+
+                function sendQuery() {
+
+                    $.ajax({
+                        type: "GET",
+                        crossDomain: true,
+                        url: $('#url').val(),
+                        data: {query: editor.getValue()},
+                        dataType: 'html'
+
+                    }).done(function(response) {
+                        console.log(response);
+                        responseEditor.getSession().setValue(response);
+                    });
+
                 }
 
             </script>
