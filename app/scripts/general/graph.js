@@ -3,7 +3,7 @@ define([
   'jquery',
   'backbone'
 ], function($, Backbone){
-	
+
 	var Graph = Backbone.Model.extend({
 		init: function () {
 
@@ -23,18 +23,18 @@ define([
 
             this.vis.selectAll("circle")
                 .data(this.tree(this.root))
-              .enter().append("circle")
+                .enter().append("circle")
                 .attr("class", "node")
                 .attr("r", 3.5)
                 .attr("cx", this.x)
                 .attr("cy", this.y)
-                .on("click", 
+                .on("click",
 
-                	function (env) {
-			            update.call(this, env);
-			        }
+                function (env) {
+                  update.call(this, env);
+                }
 
-                );
+            );
 
 		},
 

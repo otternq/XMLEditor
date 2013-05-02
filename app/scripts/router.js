@@ -15,41 +15,43 @@ define([
     }
   });
 
-  var initialize = function(){
+  var initialize = function() {
 
-    var app_router = new AppRouter;
+    var app_router = new AppRouter();
 
-    app_router.on('route:editor', function(type){
+    app_router.on('route:editor', function(type) {
 
-      var type = "visual";
+    var type = "visual";
 
-      var menuView = new MenuView();
-      menuView.render(type);
-
-
-
-      if (type == "visual") {
-
-        var graphView = new GraphView();
-        graphView.render();
-
-      } else {
-        console.log("Need a view for the editor");
-      }
+    var menuView = new MenuView();
+    menuView.render(type);
 
 
-    });
 
-    app_router.on('route:about', function() {
-      console.log("In the about route");
-    });
+    if (type == "visual") {
 
-    app_router.on('route:defaultAction', function(){
-        console.log("Default Route");
-    });
+      var graphView = new GraphView();
+      graphView.render();
 
-    Backbone.history.start({pushState: true, root: "/"});
+    } else {
+      console.log("Need a view for the editor");
+    }
+
+
+  });
+
+  app_router.on('route:about', function() {
+    console.log("In the about route");
+  });
+
+  app_router.on('route:defaultAction', function(){
+    console.log("Default Route");
+  });
+
+  Backbone.history.start({pushState: true, root: "/"});
+
   };
+
   return {
     initialize: initialize
   };
